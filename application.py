@@ -230,12 +230,14 @@ def reviews(book_id):
    
 
 @app.route('/get/<int:book_id>')
+@login_required
 def book(book_id):
     book = db.execute("SELECT * FROM book INNER JOIN author ON book.author_id = author.id WHERE book.id = :id",{"id":book_id}).fetchall()
     reviews = db.execute("SELECT * FROM reviews INNER JOIN users ON reviews.user_id = users.id WHERE book_id = :id",{"id":book_id}).fetchall()
     return render_template("thebook.html", books=book, reviews=reviews, id=book_id)
 
 @app.route('/get/<string:name>')
+@login_required
 def authorbook(name):
     book_ids = []
     books = db.execute("SELECT * FROM book INNER JOIN author ON book.author_id = author.id WHERE name = :name",{"name":name}).fetchall()
