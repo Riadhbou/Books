@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://getbootstrap.com/docs/4.1/examples/cover/# -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/favicon.png">
+    {% block style %}{% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/cover.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+
+    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h1 class="masthead-brand"><a href="/" style="text-decoration: none; color:white;">Books</a></h1>
+            <nav class="nav nav-masthead justify-content-center">
+            {% if session.user_id %}
+                <a class="nav-link {% block Search %}{% endblock %}" href="/search">Search</a>
+                <a class="nav-link" href="/title">Titels</a>
+                <a class="nav-link" href="/author">Authors</a>
+                <a class="nav-link {% block Compte %}{% endblock %}" href="/pass">Compte</a>
+                <a class="nav-link" href="/logout">Log Out</a>
+          {% else %}
+            <a class="nav-link {% block register %}{% endblock %}" href="/register">Register</a>
+            <a class="nav-link {% block login %}{% endblock %}" href="/login">Log In</a>
+          {% endif %}  
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        {% block main %}{% endblock %}
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/static/jquery-slim.min.js"><\/script>')</script>
+    <script src="/static/popper.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+  
+
+</body></html>

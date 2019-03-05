@@ -1,0 +1,329 @@
+{% extends "layout2.html" %}
+
+{% block title %}
+    TheBook
+{% endblock %}
+{% block style%}
+<style>
+.container {
+  border: 2px solid #ccc;
+  background-color: grey;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+.container span {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+@media (max-width: 500px) {
+  .container {
+      text-align: center;
+  }
+}
+
+
+main {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+.form
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: 100%;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 8px 8px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 10px;
+  right: 54px;
+  width: 142px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 9%;
+  left: 58%;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 500px;
+  padding: 10px;
+  background-color: grey;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 5px;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+@media only screen and (max-width: 800px)
+  {
+      .form
+    {
+        /* center form controls */
+        display: inline-block;
+
+        /* override Bootstrap's 100% width for form controls */
+        width: 100%;
+    }
+
+    /* Button used to open the contact form - fixed at the bottom of the page */
+    .open-button {
+      background-color: #555;
+      color: white;
+      padding: 8px 8px;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      position: initial;
+      bottom: 10px;
+      right: 54px;
+      width: 142px;
+    }
+
+    /* The popup form - hidden by default */
+    .form-popup {
+      display: none;
+      position: fixed;
+      bottom: 103px;
+      left: 213px;
+      border: 3px solid #f1f1f1;
+      z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+      max-width: 500px;
+      padding: 10px;
+      background-color: grey;
+    }
+
+    /* Full-width input fields */
+    .form-container input[type=text], .form-container input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* When the inputs get focus, do something */
+    .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Set a style for the submit/login button */
+    .form-container .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 5px 5px;
+      border: none;
+      cursor: pointer;
+      width: 20%;
+      margin-bottom:10px;
+      opacity: 0.8;
+    }
+
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+      background-color: red;
+    }
+
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover, .open-button:hover {
+      opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 770px)
+  {
+      .form
+    {
+        /* center form controls */
+        display: inline-block;
+
+        /* override Bootstrap's 100% width for form controls */
+        width: 100%;
+    }
+
+    /* Button used to open the contact form - fixed at the bottom of the page */
+    .open-button {
+      background-color: #555;
+      color: white;
+      padding: 8px 8px;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      position: initial;
+      bottom: 10px;
+      right: 54px;
+      width: 142px;
+    }
+
+    /* The popup form - hidden by default */
+    .form-popup {
+      display: none;
+      position: fixed;
+      bottom: 103px;
+      left: 11px;
+      border: 3px solid #f1f1f1;
+      z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+      max-width: 500px;
+      padding: 10px;
+      background-color: grey;
+    }
+
+    /* Full-width input fields */
+    .form-container input[type=text], .form-container input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* When the inputs get focus, do something */
+    .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Set a style for the submit/login button */
+    .form-container .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 5px 5px;
+      border: none;
+      cursor: pointer;
+      width: 20%;
+      margin-bottom:10px;
+      opacity: 0.8;
+    }
+
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+      background-color: red;
+    }
+
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover, .open-button:hover {
+      opacity: 1;
+    }
+}
+#texte{
+  text-align: left;
+  font-size:150%;
+}
+@media only screen and (max-width: 410px)
+  {
+    #texte{
+      text-align: left;
+      font-size:129%;
+    }
+  }
+
+</style>
+{% endblock %}
+{% block main %}
+                {% for book in books %}
+                <div id="texte">
+                    <li style="list-style: none;">BOOK:</li>
+                    <li>Title: {{book.title}}</li>
+                    <li>ISBN: {{book.isbn}}</li>
+                    <li>Author: <a href={{ url_for('authorbook',name=book.name) }}><strong>{{book.name}}</strong></a></li>
+                    <li>Publish Year: {{book.year}}</li>
+                    <hr/>
+                </div>
+                
+                 {% endfor %}
+                <div>
+                <h1 style="text-align: left;">Reviews :</h1>
+                    {% for review in reviews %}
+                        <div style="text-align: left;" class="container">
+                          <p><span>{{review.username}}</span><i> Posted on {{review.time}} GMT:</i></p>
+                          <p>{{review.review}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="open-button" onclick="openForm()">Add Review</button>
+
+                <div class="form-popup" id="myForm">
+                <form action="{{ url_for('reviews',book_id=id )}}" class="form-container">
+                    <h1 style="color: black;">Add Review</h1>
+                    <textarea autofocus required name="review" id="review" class="form" rows="5"></textarea>
+
+                    <button type="submit" class="btn">Submit</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </form>
+                </div>
+
+                <script>
+                function openForm() {
+                document.getElementById("myForm").style.display = "block";
+                }
+
+                function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+                }
+                </script>
+{% endblock %}

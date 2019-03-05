@@ -1,0 +1,39 @@
+{% extends "layout2.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block login %}
+    active
+{% endblock %}
+
+{% block main %}
+    <form action="/login" method="post">
+        <div  class="form-group alert d-none" role="alert" id="message">Invalid Username or Password !!!</div>
+        <div class="form-group ">
+            <input id="username" autocomplete="off" autofocus class="form-control" required name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input id="password" class="form-control" required name="password" placeholder="Password" type="password">
+        </div>
+        <button id="button" class="btn btn-primary" type="submit">Log In</button>
+    </form>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            document.getElementById("button").onclick = function(event){
+                $.get("/connect",{username: $("#username").val(), password:$("#password").val()} , function(data) {
+                        if (data == false){
+                           document.getElementById("message").classList.remove('d-none');
+                        }
+                        if(data == true){
+                            document.querySelector("form").submit();
+                        }
+                        });
+                    event.preventDefault()
+                };
+            });
+    </script>
+{% endblock %}
